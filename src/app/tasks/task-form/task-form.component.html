@@ -1,0 +1,49 @@
+<div class="flex h-screen justify-center items-center">
+
+  <div class="shadow-md px-5 py-5 w-full max-w-2xl mx-auto mt-5">
+    <h1 class="text-center font-bold text-2xl mb-5 uppercase">
+      {{task == undefined ? "Nouvelle tache" : "Edition"}}
+    </h1>
+      <form [formGroup]="FormTask" (submit)="task == undefined ? onSubmit($event) : editTask($event) ">
+        <div class="mb-4">
+            <label class="block text-dark-700 text-sm font-bold mb-2" for="username">
+                Nom de la tache
+              </label>
+            <input [ngClass]="
+             {
+              'border-red-500'   : FormTask.controls.name.touched && FormTask.controls.name.errors?.['required'] ,
+              'border-white-500' : !(FormTask.controls.name.touched && FormTask.controls.name.errors?.['required'])
+             }"
+              formControlName="name"  [ngModel]="task?.name" required="true" type="text"  name="name" id=""
+              class="shadow-md w-full rounded-md border-2 py-2 px-3 text-dark-700  border-white-500">
+             <p *ngIf="FormTask.controls.name.touched && FormTask.controls.name.errors?.['required']" class="text-red-500">le champ name est requis</p>
+        </div>
+        <div class="mb-4">
+            <label  class="block text-dark-700 text-sm font-bold mb-2">
+                Description
+              </label>
+            <textarea
+            [ngModel]="task?.description"
+            [ngClass]="
+             {
+              'border-red-500'   : FormTask.controls.description.touched && FormTask.controls.description.errors?.['required'] ,
+              'border-white-500' : !(FormTask.controls.description.touched && FormTask.controls.description.errors?.['required'])
+             }"
+              formControlName="description"  cols="20" rows="5"
+              class="shadow-md w-full rounded-md border-2 py-2 px-3 text-dark-700 border-white-500">
+            </textarea>
+            <p *ngIf="FormTask.controls.description.touched && FormTask.controls.description.errors?.['required']" class="text-red-500">le champ description est requis</p>
+        </div>
+        <div class="mb-4">
+          <label class="inline-flex items-center cursor-pointer">
+            <input type="checkbox"  formControlName="completed" class="sr-only peer" [checked]="task?.completed">
+            <div class="relative w-11 h-6 bg-gray-200 rounded-full peer peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
+            <span class="ms-3 text-sm font-medium text-dark-900">Status</span>
+          </label>
+        </div>
+        <button BorderErrorInput type="submit" class="bg-blue-500 px-3 py-3 rounded-md text-md font-bold text-white mt-3">
+          {{task == undefined ? "Creer" : "Editer"}}
+        </button>
+     </form>
+</div>
+</div>

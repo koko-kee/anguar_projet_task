@@ -1,0 +1,16 @@
+<div class="flex h-screen justify-center items-center">
+    
+    <div *ngIf="task" class="container mx-auto px-4 py-4">
+        <div class="bg-white shadow-lg px-5 py-5 max-auto">
+            <h1 class="text-4xl font-bold mb-5"> {{task.name}}</h1>
+            <span class="{{task.completed | pipeColorStatut}} px-1 py-1 rounded-md text-white font-bold">{{task.completed | pipeSetText}}</span>
+            <p class="mt-3">
+                {{task.description}}
+            </p>
+        </div>
+        <button (click)="goToBack()" class="bg-blue-600 px-5 py-2 rounded-md mt-3 text-white ">Back</button>
+    </div>
+    <div *ngIf="!task" class="container mx-auto px-4 py-4">
+        <app-loader></app-loader>
+    </div>
+</div>
