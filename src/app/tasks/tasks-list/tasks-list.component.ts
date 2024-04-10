@@ -14,11 +14,24 @@ import {
   startWith,
   switchMap,
 } from 'rxjs';
-import { FormBuilder,ReactiveFormsModule} from '@angular/forms';
+import { FormBuilder, ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { ColorStatuSpanPipe } from '../color-statu-span.pipe';
+import { PipeSetTextPipe } from '../pipe-set-text.pipe';
+import { NgFor, AsyncPipe, DatePipe } from '@angular/common';
 
 @Component({
-  selector: 'app-tasks-list',
-  templateUrl: './tasks-list.component.html',
+    selector: 'app-tasks-list',
+    templateUrl: './tasks-list.component.html',
+    standalone: true,
+    imports: [
+        FormsModule,
+        ReactiveFormsModule,
+        NgFor,
+        AsyncPipe,
+        DatePipe,
+        PipeSetTextPipe,
+        ColorStatuSpanPipe,
+    ],
 })
 
 export class TasksListComponent{

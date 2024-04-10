@@ -4,9 +4,7 @@ export class Task {
     name!: string;
     description!: string;
     completed!: boolean;
-    created!:Date
-
-    
+    created_at!:Date    
 }
 
 export class SearchTask {

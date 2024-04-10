@@ -51,7 +51,7 @@
                     </span>
                 </th>
                 <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                    {{task.created | date}}
+                    {{task.created_at | date}}
                 </th>
                 <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                     <button (click)="editRoute(task.id)" class="bg-yellow-500 px-2 py-2 mt-5 ml-5 rounded-lg text-gray-50 font-bold">Editer</button>

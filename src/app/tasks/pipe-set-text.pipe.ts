@@ -1,7 +1,8 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-  name: 'pipeSetText'
+    name: 'pipeSetText',
+    standalone: true
 })
 export class PipeSetTextPipe implements PipeTransform {
 

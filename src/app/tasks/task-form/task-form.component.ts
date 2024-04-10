@@ -2,12 +2,21 @@ import {Component, inject, OnInit} from '@angular/core';
 import { Task } from '../Task';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TasksService } from '../tasks.service';
-import { FormBuilder, Validators} from '@angular/forms';
+import { FormBuilder, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BorderErrorInputDirective } from '../border-error-input.directive';
+import { NgClass, NgIf } from '@angular/common';
 
 @Component({
-  selector: 'app-task-form',
-  templateUrl: './task-form.component.html',
-
+    selector: 'app-task-form',
+    templateUrl: './task-form.component.html',
+    standalone: true,
+    imports: [
+        FormsModule,
+        ReactiveFormsModule,
+        NgClass,
+        NgIf,
+        BorderErrorInputDirective,
+    ],
 })
 export class TaskFormComponent implements OnInit{
 
@@ -15,7 +24,6 @@ export class TaskFormComponent implements OnInit{
     name:['',Validators.required],
     description:['',Validators.required],
     completed:[false],
-    created:[new Date()]
   });
 
   task: Task | undefined;
@@ -50,7 +58,6 @@ export class TaskFormComponent implements OnInit{
       this.task.completed = this.FormTask.value.completed ?? false
       this.task.name = this.FormTask.value.name ?? ''
       this.task.description = this.FormTask.value.description ?? ''
-      this.task.created = this.FormTask.value.created ?? new Date()
       this.taskService.addTask(this.task).subscribe(
         () => {
           this.route.navigate(['']);
@@ -75,7 +82,7 @@ export class TaskFormComponent implements OnInit{
       this.task.name = this.FormTask.value.name ??  this.task.name
       this.task.description = this.FormTask.value.description ??  this.task.name
       this.task.completed = this.FormTask.value.completed ?? this.task.completed
-      this.taskService.editTask(this.task).subscribe(
+      this.taskService.editTask(this.task.id,this.task).subscribe(
         (() => this.route.navigate(['task',this.task?.id])),
         ((error) => console.log('Erreur lors de le mise a jour',error))
       );

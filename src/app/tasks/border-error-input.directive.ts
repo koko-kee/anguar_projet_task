@@ -1,7 +1,8 @@
 import { Directive, HostBinding } from '@angular/core';
 
 @Directive({
-  selector: '[BorderErrorInput]'
+    selector: '[BorderErrorInput]',
+    standalone: true
 })
 export class BorderErrorInputDirective {
 

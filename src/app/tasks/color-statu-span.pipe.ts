@@ -1,7 +1,8 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-  name: 'colorStatuSpan'
+    name: 'colorStatuSpan',
+    standalone: true
 })
 export class ColorStatuSpanPipe implements PipeTransform {
 

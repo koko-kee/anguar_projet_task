@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-loader',
-  template: `
+    selector: 'app-loader',
+    template: `
     <div class="flex justify-center h-screen items-center">
     <div class="flex-col gap-4 w-full flex items-center justify-center">
       <div class="w-28 h-28 border-8 text-blue-400 text-4xl animate-spin border-gray-300 flex items-center justify-center border-t-blue-400 rounded-full">
@@ -13,6 +13,7 @@ import { Component } from '@angular/core';
     </div>
     </div>
   `,
+    standalone: true,
 })
 export class LoaderComponent {
 
